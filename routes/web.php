@@ -8,3 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/index',[PersonController::class,'index']);
+
+Route::get('/show/{personId}',[PersonController::class,'show']);
+
+Route::post('/createPerson', [PersonController::class,'create']);
