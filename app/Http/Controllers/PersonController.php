@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 
 class PersonController extends Controller
@@ -31,13 +32,36 @@ class PersonController extends Controller
         $person = new Person();
 
 
-        $person->first_name =$request->input('first_name');
-        $person->last_name =$request->input('last_name');
-        $person->birth_name =$request->input('birth_name');
-        $person->middle_names =$request->input('middle_names');
-        $person->date_of_birth = $request->input('date_of_birth');
+        $first_name =ucfirst(strtolower($request->input('first_name')));
+        $last_name =strtoupper($request->input('last_name'));
 
-        $person->created_by = 1;
+        $birth_name = $request->input('birth_name');
+        if(!empty($birth_name)) {
+            $$birth_name = strtoupper($birth_name);
+        } else {
+            $middle_names = $last_name;
+        }
+
+        $middle_names = $request->input('middle_names');
+        if(!empty($middle_names)) {
+            $middle_names = ucwords($middle_names);
+        } else {
+            $middle_names = null;
+        }
+
+        $date_of_birth = $request->input('date_of_birth');
+
+
+        if(!isset($date_of_birth)){
+            $date_of_birth=null;
+        }
+
+        $person->first_name =$first_name;
+        $person->last_name =$last_name;
+        $person->birth_name =$birth_name;
+        $person->middle_names =$middle_names;
+        $person->date_of_birth=$date_of_birth;
+        $person->created_by = Auth::id();
 
         $saved=$person->save();
 

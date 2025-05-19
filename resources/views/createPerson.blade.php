@@ -16,7 +16,7 @@
         <br>
         <br>
         <label for="birth_name">Nom de naissance : </label>
-        <input type="text" name="birth_name" id="birth_name" required="required">
+        <input type="text" name="birth_name" id="birth_name" >
         <br>
         <br>
         <label for="middle_names">Autres prénoms: </label>
@@ -24,7 +24,7 @@
         <br>
         <br>
         <label for="date_of_birth">Date de naissance : </label>
-        <input type="date" name="date_of_birth" id="date_of_birth" required="required">
+        <input type="date" name="date_of_birth" id="date_of_birth">
         <br>
         <br>
         <input type="submit" value="Envoyer">
