@@ -1,26 +1,25 @@
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Liste des personnes') }}
+        </h2>
+    </x-slot>
 
-@if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Liste des personnes</title>
-</head>
-<body>
+        {{-- Messages de session --}}
+        @if (session('success'))
+            <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+                {{ session('success') }}
+            </div>
+        @endif
 
-    <h1>Liste des personnes</h1>
+        @if (session('error'))
+            <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
+
 
     <table>
 
@@ -43,5 +42,5 @@
         </tbody>
       </table>
 
-</body>
-</html>
+
+    </x-app-layout>
