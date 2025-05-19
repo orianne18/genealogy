@@ -10,6 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Person extends Model
 {
 
+    protected $fillable = [
+    'created_by',
+    'first_name',
+    'last_name',
+    'birth_name',
+    'middle_names',
+    'date_of_birth',
+
+];
 
     public function children(): BelongsToMany{
         return $this->belongsToMany(Person::class,'relationships','parent_id','child_id');

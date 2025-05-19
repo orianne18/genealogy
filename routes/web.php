@@ -7,8 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index',[PersonController::class,'index']);
+Route::get('/index',[PersonController::class,'index'])->name('index');
 
 Route::get('/show/{personId}',[PersonController::class,'show']);
 
-Route::post('/createPerson', [PersonController::class,'create']);
+Route::get('/createPerson', [PersonController::class,'create']);
+Route::post('/createPerson', [PersonController::class, 'store']);
