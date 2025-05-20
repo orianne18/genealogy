@@ -17,8 +17,8 @@ class TestController extends Controller
     public function testDegree(){
         DB::enableQueryLog();
         $timestart = microtime(true);
-        $person = Person::findOrFail(1536);
-        $degree = $person->getDegreeWith(1);
+        $person = Person::findOrFail(84);
+        $degree = $person->getDegreeWith(1265);
         // afficher le rÃ©sultat, le temps d'execution, et le nombre de requÃªtes SQL :
         var_dump(["degree"=>$degree, "time"=>microtime(true)-$timestart, "nb_queries"=>count(DB::getQueryLog())]);
     }
