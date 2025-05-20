@@ -34,26 +34,33 @@ class Person extends Model
 
     public function findDegree(Person $actual, Person $target,int $degree,  array $visited ){
 
-        if($actual === $target){
+        if($degree > 25){
+            return null;
+        }
+
+        if($actual->id === $target->id){
             return $degree;
         }
 
-        $actualParents=$actual->parents();
-        $actualChildren=$actual->children();
+        $visited[] = $actual->id;
 
+        $actualParents=$actual->parents()->get();
         foreach($actualParents as $actualParent){
-            if(in_array($actualParent,$visited)) continue;
-            array_push($visited,$actualParent);
-            $foundDegree = $this->findDegree($actualParent,$target,$degree+1,$visited);
+
+            if(in_array($actualParent->id,$visited, true)) continue;
+            $foundDegree = $this->findDegree($actualParent, $target, $degree + 1, $visited);
             if ($foundDegree !== null) {
                 return $foundDegree;
             }
 
         }
+
+
+        $actualChildren=$actual->children()->get();
         foreach($actualChildren as $actualChild){
-            if(in_array($actualChild,$visited)) continue;
-            array_push($visited,$actualChild);
-            $foundDegree = $this->findDegree($actualChild,$target,$degree+1,$visited);
+
+            if(in_array($actualChild->id,$visited, true)) continue;
+            $foundDegree = $this->findDegree($actualChild, $target, $degree + 1, $visited);
             if ($foundDegree !== null) {
                 return $foundDegree;
             }
@@ -63,13 +70,16 @@ class Person extends Model
 
     }
 
-    public function getDegreeWith(Person $target_person_with){
+    public function getDegreeWith(int $targetId){
         $degree=0;
 
+        $target = Person::findOrFail($targetId);
         $visited = [];
 
+        $foundDegree =  $this->findDegree($this,$target,$degree,$visited);
 
-        return findDegree($this,$target_person_with,0,$visited);
+        if ($foundDegree === null) return false;
+        return $foundDegree;
 
     }
 

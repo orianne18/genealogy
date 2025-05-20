@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,5 +25,7 @@ Route::get('/show/{personId}',[PersonController::class,'show']);
 
 Route::get('/createPerson', [PersonController::class,'create'])->middleware('auth');
 Route::post('/createPerson', [PersonController::class, 'store']);
+
+Route::get('/testDegree', [TestController::class, 'testDegree']);
 
 require __DIR__.'/auth.php';

@@ -71,4 +71,5 @@ class PersonController extends Controller
         }
         return redirect()->route('index')->with('success', 'Nouvelle personne créée.');
     }
+
 }
