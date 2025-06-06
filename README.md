@@ -1,8 +1,35 @@
-# Genealogy
+# 👨‍👩‍👧‍👦 Projet Laravel – Généalogie
 
-## [Lien dbdiagram.io](https://dbdiagram.io/d/genealogy-682cc0e4b9f7446da3608e64) 
+Projet réalisé en 3ᵉ année de BUT Informatique.  
+Création d’un site de gestion d’arbre généalogique collaboratif.
 
-## Évolution des données 
+## 🚀 Fonctionnalités principales
+- Authentification des utilisateurs
+- Création et affichage de fiches personnes
+- Ajout de relations parent-enfant
+- Calcul automatique du degré de parenté
+- Validation communautaire des modifications
+
+## 💻 Stack technique
+- Laravel 8+
+- PHP / MySQL
+- Blade, Eloquent ORM
+
+## ✍️ Travail réalisé
+- Migrations (`people`, `relationships`)
+- Modèles Eloquent avec relations
+- Contrôleurs : `index`, `show`, `create`, `store`
+- Validation des champs avec formattage (noms, dates…)
+- Algorithme de calcul du degré de parenté (`getDegreeWith`)
+- Interface simple avec Blade
+- Sécurité : accès restreint aux utilisateurs connectés
+
+## 🗂️ Schéma de la base de données
+📎 [Lien dbdiagram.io](https://dbdiagram.io/d/genealogy-682cc0e4b9f7446da3608e64)
+
+---
+
+## 📘 Evolution des données
 
 ### 1. Proposition de modifications
 
